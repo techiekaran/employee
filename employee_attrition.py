@@ -54,14 +54,18 @@ st.markdown("""
         margin-bottom: 0 !important;
     }
     
-    /* Target Streamlit's native st.container(border=True) cards */
-    div[data-testid="stVerticalBlockBorder"] {
+    /* Universal selector for Streamlit container borders to force display */
+    div.stVerticalBlockBorder,
+    div[data-testid="stVerticalBlockBorder"],
+    .stForm,
+    div[data-testid="stForm"] {
         background-color: #FFFFFF !important;
-        border: 1px solid #E2E8F0 !important;
+        border: 1.5px solid #CBD5E1 !important; /* Visible slate border */
         border-radius: 12px !important;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
-        padding: 1.5rem !important;
-        margin-bottom: 1rem !important;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.03) !important;
+        padding: 2rem !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 1.5rem !important;
     }
     
     /* Custom button behavior */
@@ -110,7 +114,7 @@ st.markdown("""
         background: white;
         padding: 1rem 1.25rem;
         border-radius: 8px;
-        border: 1px solid #E2E8F0;
+        border: 1px solid #CBD5E1;
         text-align: center;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
         transition: all 0.2s ease;
