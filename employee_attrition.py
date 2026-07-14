@@ -10,7 +10,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# Custom CSS Injection for Modern Premium UI
+# Custom CSS Injection for Modern Responsive UI
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
@@ -21,34 +21,26 @@ st.markdown("""
         font-family: 'Plus Jakarta Sans', sans-serif;
     }
     
-    /* Global slider custom design */
-    .stSlider > div {
-        padding-bottom: 10px;
+    /* Title styling */
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
     }
     
     /* Hero Header Panel */
     .hero-banner {
         background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
         color: white;
-        padding: 2.5rem;
-        border-radius: 16px;
-        margin-bottom: 2.5rem;
+        padding: 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
         box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.15);
         border-left: 6px solid #0D9488;
         position: relative;
         overflow: hidden;
     }
     
-    .hero-banner::before {
-        content: "";
-        position: absolute;
-        top: 0; right: 0; width: 300px; height: 100%;
-        background: radial-gradient(circle, rgba(13,148,136,0.1) 0%, rgba(0,0,0,0) 70%);
-        pointer-events: none;
-    }
-    
     .hero-banner h1 {
-        font-size: 2.5rem !important;
+        font-size: 2.2rem !important;
         font-weight: 700 !important;
         margin: 0 !important;
         color: #F8FAFC !important;
@@ -56,30 +48,20 @@ st.markdown("""
     }
     
     .hero-banner p {
-        color: #94A3B8;
-        font-size: 1.1rem;
-        margin-top: 0.6rem !important;
+        color: #94A3B8 !important;
+        font-size: 1rem !important;
+        margin-top: 0.5rem !important;
         margin-bottom: 0 !important;
     }
     
-    /* Section Cards container */
-    .input-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 12px;
-        border: 1px solid #E2E8F0;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
-        margin-bottom: 1.5rem;
-    }
-    
-    .input-card h3 {
-        color: #0F172A;
-        font-size: 1.25rem !important;
-        font-weight: 600 !important;
-        margin-top: 0 !important;
-        margin-bottom: 1.25rem !important;
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid #F1F5F9;
+    /* Target Streamlit's native st.container(border=True) cards */
+    div[data-testid="stVerticalBlockBorder"] {
+        background-color: #FFFFFF !important;
+        border: 1px solid #E2E8F0 !important;
+        border-radius: 12px !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.02) !important;
+        padding: 1.5rem !important;
+        margin-bottom: 1rem !important;
     }
     
     /* Custom button behavior */
@@ -87,40 +69,38 @@ st.markdown("""
         background: linear-gradient(135deg, #0D9488 0%, #0F766E 100%) !important;
         color: white !important;
         border: none !important;
-        padding: 0.8rem 2.5rem !important;
+        padding: 0.75rem 2rem !important;
         font-weight: 600 !important;
-        font-size: 1.1rem !important;
-        border-radius: 10px !important;
-        box-shadow: 0 10px 15px -3px rgba(13, 148, 136, 0.25) !important;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        font-size: 1.05rem !important;
+        border-radius: 8px !important;
+        box-shadow: 0 8px 12px -3px rgba(13, 148, 136, 0.25) !important;
+        transition: all 0.2s ease !important;
         width: 100% !important;
         margin-top: 1rem;
         cursor: pointer;
     }
     
     .stButton>button:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 15px 20px -3px rgba(13, 148, 136, 0.35) !important;
-        opacity: 0.95;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 12px 16px -3px rgba(13, 148, 136, 0.35) !important;
     }
     
     /* Custom Results Cards */
     .result-box {
-        border-radius: 12px;
-        padding: 1.75rem;
-        margin: 2rem 0;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.02);
     }
     
     .result-stay {
-        background: #F0FDF4;
-        border-left: 6px solid #16A34A;
+        background-color: #F0FDF4;
         border: 1px solid #DCFCE7;
         border-left: 6px solid #16A34A;
     }
     
     .result-leave {
-        background: #FEF2F2;
+        background-color: #FEF2F2;
         border: 1px solid #FEE2E2;
         border-left: 6px solid #DC2626;
     }
@@ -128,8 +108,8 @@ st.markdown("""
     /* Dynamic Metric cards */
     .custom-metric {
         background: white;
-        padding: 1.25rem 1.5rem;
-        border-radius: 10px;
+        padding: 1rem 1.25rem;
+        border-radius: 8px;
         border: 1px solid #E2E8F0;
         text-align: center;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
@@ -137,22 +117,21 @@ st.markdown("""
     }
     
     .custom-metric:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.04);
-        border-color: #CBD5E1;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
     }
     
     .custom-metric-label {
-        font-size: 0.875rem;
+        font-size: 0.8rem;
         color: #64748B;
-        font-weight: 500;
+        font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         margin-bottom: 0.25rem;
     }
     
     .custom-metric-value {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
         color: #0F172A;
         font-weight: 700;
     }
@@ -203,43 +182,37 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# Layout: Split into two columns for inputs
+# Layout: Split into two columns for inputs using native container cards
 col_left, col_right = st.columns(2)
 
 with col_left:
-    st.markdown('<div class="input-card">', unsafe_allow_html=True)
-    st.markdown('<h3>📊 Personal & Financial Attributes</h3>', unsafe_allow_html=True)
-    
-    age = st.slider("Employee Age (Years)", 18, 60, 32)
-    monthly_income = st.slider("Monthly Income (₹)", 1000, 50000, 6800, step=500)
-    distance = st.slider("Distance From Home (km)", 1, 30, 8)
-    st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(border=True):
+        st.markdown('<h3 style="margin-top:0; color:#0F172A; font-size:1.15rem; font-weight:600;">📊 Personal & Financial Attributes</h3>', unsafe_allow_html=True)
+        age = st.slider("Employee Age (Years)", 18, 60, 32)
+        monthly_income = st.slider("Monthly Income (₹)", 1000, 50000, 6800, step=500)
+        distance = st.slider("Distance From Home (km)", 1, 30, 8)
 
 with col_right:
-    st.markdown('<div class="input-card">', unsafe_allow_html=True)
-    st.markdown('<h3>💼 Experience & Contractual Status</h3>', unsafe_allow_html=True)
-    
-    years_at_company = st.slider("Years At Company", 0, 40, 4)
-    total_working_years = st.slider("Total Working Years", 0, 40, 8)
-    overtime = st.selectbox("Mandatory Overtime Status", ["No", "Yes"])
-    st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(border=True):
+        st.markdown('<h3 style="margin-top:0; color:#0F172A; font-size:1.15rem; font-weight:600;">💼 Experience & Contractual Status</h3>', unsafe_allow_html=True)
+        years_at_company = st.slider("Years At Company", 0, 40, 4)
+        total_working_years = st.slider("Total Working Years", 0, 40, 8)
+        overtime = st.selectbox("Mandatory Overtime Status", ["No", "Yes"])
 
 # Survey Scores in wide card
-st.markdown('<div class="input-card">', unsafe_allow_html=True)
-st.markdown('<h3>📋 Engagement & Satisfaction Scores</h3>', unsafe_allow_html=True)
-
-survey_col1, survey_col2, survey_col3, survey_col4 = st.columns(4)
-
-with survey_col1:
-    job_satisfaction = st.slider("Job Satisfaction (1-4)", 1, 4, 3)
-with survey_col2:
-    environment_satisfaction = st.slider("Environment Satisfaction (1-4)", 1, 4, 3)
-with survey_col3:
-    job_involvement = st.slider("Job Involvement (1-4)", 1, 4, 3)
-with survey_col4:
-    work_life_balance = st.slider("Work Life Balance (1-4)", 1, 4, 3)
-
-st.markdown('</div>', unsafe_allow_html=True)
+with st.container(border=True):
+    st.markdown('<h3 style="margin-top:0; color:#0F172A; font-size:1.15rem; font-weight:600;">📋 Engagement & Satisfaction Scores</h3>', unsafe_allow_html=True)
+    
+    survey_col1, survey_col2, survey_col3, survey_col4 = st.columns(4)
+    
+    with survey_col1:
+        job_satisfaction = st.slider("Job Satisfaction (1-4)", 1, 4, 3)
+    with survey_col2:
+        environment_satisfaction = st.slider("Environment Satisfaction (1-4)", 1, 4, 3)
+    with survey_col3:
+        job_involvement = st.slider("Job Involvement (1-4)", 1, 4, 3)
+    with survey_col4:
+        work_life_balance = st.slider("Work Life Balance (1-4)", 1, 4, 3)
 
 # Convert OverTime to numeric
 overtime_numeric = 1 if overtime == "Yes" else 0
